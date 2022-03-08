@@ -1,28 +1,39 @@
 <template>
-  <n-layout has-sider>
-    <n-layout-sider bordered :width="240">
-      <n-menu :options="menuOptions" children-field="children" />
+  <MainHeader class="main-header"></MainHeader>
+  <n-layout class="layout-container" position="absolute" has-sider>
+    <n-layout-sider
+      bordered
+      collapse-mode="width"
+      :collapsed-width="64"
+      :width="240"
+      show-trigger
+    >
+      <n-menu
+        :collapsed-width="64"
+        :collapsed-icon-size="22"
+        :options="menuOptions"
+        children-field="children"
+      />
     </n-layout-sider>
-    <n-layout />
+    <n-layout-content content-style="background: #f1f5f9;padding: 16px 24px;">
+      <router-view></router-view>
+    </n-layout-content>
   </n-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, h, ref, Component, computed } from 'vue'
-import { NIcon } from 'naive-ui'
+import { defineComponent, h, Component } from 'vue'
 import type { MenuOption } from 'naive-ui'
-import { RouterLink, useRouter } from 'vue-router'
+import { RouterLink, useRouter, RouteRecord } from 'vue-router'
+import MainHeader from './components/MainHeader.vue'
+import { renderIcon } from '@/utils/render'
 
-function renderIcon(icon: Component) {
-  return () => h(NIcon, null, { default: () => h(icon) })
-}
-
-function getMenuOptions(routes): MenuOption[] {
+function getMenuOptions(routes: RouteRecord[]): MenuOption[] {
   console.log(routes)
-  const menuOptions = []
+  const menuOptions: MenuOption[] = []
   routes.forEach((route) => {
     menuOptions.push({
-      key: route.name,
+      key: route.name as string,
       label: () =>
         h(
           RouterLink,
@@ -33,12 +44,14 @@ function getMenuOptions(routes): MenuOption[] {
           },
           { default: () => route.name },
         ),
+      icon: route.meta?.icon && renderIcon(route.meta.icon),
     })
   })
   return menuOptions
 }
 
 export default defineComponent({
+  components: { MainHeader },
   setup() {
     const router = useRouter()
     const menuOptions = getMenuOptions(router.getRoutes())
@@ -48,3 +61,15 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+.layout-container.n-layout {
+  top: 56px;
+}
+</style>

@@ -1,12 +1,10 @@
 import { createApp } from 'vue'
-import naive from 'naive-ui'
-
 import App from './App.vue'
+import '@/styles/index.scss'
 
+import naive from '@/plugins/naive-ui'
 import { router } from '@/router'
 import { store } from '@/store'
-
-import '@/styles/index.scss'
 
 import '../mock'
 
