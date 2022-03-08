@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@vicons/ionicons5': ^0.12.0
   '@vitejs/plugin-vue': ^2.2.0
   axios: ^0.26.0
   js-cookie: ^3.0.1
@@ -15,6 +16,7 @@ specifiers:
   vue-tsc: ^0.29.8
 
 dependencies:
+  '@vicons/ionicons5': 0.12.0
   axios: 0.26.0
   js-cookie: 3.0.1
   naive-ui: 2.26.0_vue@3.2.31
@@ -105,6 +107,10 @@ packages:
 
   /@types/node/14.14.45:
     resolution: {integrity: sha512-DssMqTV9UnnoxDWu959sDLZzfvqCF0qDNRjaWeYSui9xkFe61kKo4l1TWNTQONpuXEm+gLMRvdlzvNHBamzmEw==}
+    dev: false
+
+  /@vicons/ionicons5/0.12.0:
+    resolution: {integrity: sha512-Iy1EUVRpX0WWxeu1VIReR1zsZLMc4fqpt223czR+Rpnrwu7pt46nbnC2ycO7ItI/uqDLJxnbcMC7FujKs9IfFA==}
     dev: false
 
   /@vitejs/plugin-vue/2.2.4_vite@2.8.6+vue@3.2.31:
