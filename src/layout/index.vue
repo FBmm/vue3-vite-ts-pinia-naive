@@ -44,7 +44,7 @@ function getMenuOptions(routes: RouteRecord[]): MenuOption[] {
           },
           { default: () => route.name },
         ),
-      icon: route.meta?.icon && renderIcon(route.meta.icon),
+      icon: route.meta.icon && renderIcon(route.meta.icon),
     })
   })
   return menuOptions
